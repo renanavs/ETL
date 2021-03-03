@@ -14,8 +14,7 @@ public class Job {
     public Job() {
     }
 
-    public Job(Integer id, String descricao) {
-        this.id = id;
+    public Job(String descricao) {
         this.descricao = descricao;
     }
 

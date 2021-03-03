@@ -9,13 +9,13 @@ public class Cliente {
     @Id
     @GeneratedValue
     private Integer id;
+
     private String descricao;
 
     public Cliente() {
     }
 
-    public Cliente(Integer id, String descricao) {
-        this.id = id;
+    public Cliente(String descricao) {
         this.descricao = descricao;
     }
 

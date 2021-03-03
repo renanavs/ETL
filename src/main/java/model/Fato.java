@@ -10,13 +10,13 @@ public class Fato {
     @GeneratedValue
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Cliente cliente;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Ambiente ambiente;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.PERSIST)
     private Job job;
 
     private Date dataExecucao;

@@ -1,18 +1,23 @@
 package process;
 
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Extract {
 
     private static final String FILE_NAME = "src/main/resources/p2d2.xlsx";
 
-    public static void extract() {
+    public static List<Row> extract() {
+        List<Row> rows = new ArrayList<>();
+
         try {
             FileInputStream excelFile = new FileInputStream(FILE_NAME);
             Workbook workbook = new XSSFWorkbook(excelFile);
@@ -21,25 +26,14 @@ public class Extract {
 
             while (iterator.hasNext()) {
                 Row currentRow = iterator.next();
-                Iterator<Cell> cellIterator = currentRow.iterator();
-
-                while (cellIterator.hasNext()) {
-                    Cell currentCell = cellIterator.next();
-                    if (currentCell.getCellType() == CellType.STRING) {
-                        System.out.print(currentCell.getStringCellValue() + "--");
-                    } else if (currentCell.getCellType() == CellType.NUMERIC) {
-                        System.out.print(currentCell.getNumericCellValue() + "--");
-                    }
-
-                }
-                System.out.println();
-
+                rows.add(currentRow);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        rows.remove(0); // removendo os headers;
+        return rows;
     }
 
 }
