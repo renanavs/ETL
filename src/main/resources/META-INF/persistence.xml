@@ -5,6 +5,11 @@
 
     <persistence-unit name="mineracao_de_dados">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>model.Cliente</class>
+        <class>model.Ambiente</class>
+        <class>model.Fato</class>
+        <class>model.Job</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

@@ -1,5 +1,7 @@
+import model.Fato;
 import org.apache.poi.ss.usermodel.Row;
 import process.Extract;
+import process.Loader;
 import process.Transform;
 
 import javax.persistence.EntityManager;
@@ -19,6 +21,10 @@ public class MainClass {
 
         //Transform
         Transform transform = new Transform(rows);
-        transform.transform();
+        List<Fato> fatoList = transform.transform();
+
+        //Loader
+        Loader loader = new Loader(fatoList, entityManager);
+        loader.loadOnWarehouse();
     }
 }
