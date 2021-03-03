@@ -25,16 +25,16 @@ public class Fato {
 
     private Time horaFim;
 
-    private Time tempoExecucao;
+    private long tempoExecucao;
 
-    private Time metaAtualExecucao;
+    private long metaAtualExecucao;
 
-    private Status status;
+    private String status;
 
     public Fato() {
     }
 
-    public Fato(Integer id, Cliente cliente, Ambiente ambiente, Job job, Date dataExecucao, Time horaInicio, Time horaFim, Time tempoExecucao, Time metaAtualExecucao, Status status) {
+    public Fato(Integer id, Cliente cliente, Ambiente ambiente, Job job, Date dataExecucao, Time horaInicio, Time horaFim, long tempoExecucao, long metaAtualExecucao, String status) {
         this.id = id;
         this.cliente = cliente;
         this.ambiente = ambiente;
@@ -103,27 +103,27 @@ public class Fato {
         this.horaFim = horaFim;
     }
 
-    public Time getTempoExecucao() {
+    public long getTempoExecucao() {
         return tempoExecucao;
     }
 
-    public void setTempoExecucao(Time tempoExecucao) {
+    public void setTempoExecucao(long tempoExecucao) {
         this.tempoExecucao = tempoExecucao;
     }
 
-    public Time getMetaAtualExecucao() {
+    public long getMetaAtualExecucao() {
         return metaAtualExecucao;
     }
 
-    public void setMetaAtualExecucao(Time metaAtualExecucao) {
+    public void setMetaAtualExecucao(long metaAtualExecucao) {
         this.metaAtualExecucao = metaAtualExecucao;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

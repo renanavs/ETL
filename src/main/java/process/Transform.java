@@ -4,6 +4,7 @@ import model.Ambiente;
 import model.Cliente;
 import model.Fato;
 import model.Job;
+import model.Status;
 import org.apache.poi.ss.usermodel.Row;
 
 import java.sql.Date;
@@ -31,17 +32,21 @@ public class Transform {
 
         getRows().forEach(row -> {
             Fato fato = new Fato();
+
             fato.setCliente(new Cliente(row.getCell(0).getStringCellValue()));
             fato.setAmbiente(new Ambiente(row.getCell(1).getStringCellValue()));
             fato.setJob(new Job(row.getCell(2).getStringCellValue()));
+
             final String dataString = String.valueOf(row.getCell(3).getStringCellValue());
             fato.setDataExecucao(parseDate(dataString));
-            //fato.setHoraInicio(new Time((long) row.getCell(3).getNumericCellValue()));
-            //fato.setHoraFim(new Time((long)row.getCell(3).getNumericCellValue()));
-            //fato.setTempoExecucao(new Time((long) row.getCell(3).getNumericCellValue()));
-            //fato.setMetaAtualExecucao(new Time((long) row.getCell(3).getNumericCellValue()));
-            //fatos.add(fato);
-            System.out.println("test");
+
+            fato.setHoraInicio(Time.valueOf(row.getCell(4).getStringCellValue()));
+            fato.setHoraFim(Time.valueOf(row.getCell(5).getStringCellValue()));
+            fato.setTempoExecucao(Long.parseLong(row.getCell(6).getStringCellValue()));
+            fato.setMetaAtualExecucao(Long.parseLong(row.getCell(7).getStringCellValue()));
+            fato.setStatus(row.getCell(8).getStringCellValue());
+
+            fatos.add(fato);
         });
 
         return fatos;
